@@ -47,6 +47,9 @@ class Pydradis3:
         else:
             self.__proxies = urllib.request.getproxies()
 
+        if self.__debug:
+            print(f'Using proxies : {str(self.__proxies)}')
+
 
     def debug(self, val: bool):
         self.__debug = val
@@ -359,14 +362,26 @@ class Pydradis3:
             return None
 
         data = '{"node":{'
+        # Prevent invalid data when updating only a single element
+        first=True
         if (label != None):
+            first=False
             data  += '"label":"' + label + '"'
         if (type_id != None):
-            data  += ', "type_id":"' + str(type_id) + '"'
+            if not first:
+                data +=', '
+                first = False
+            data  += '"type_id":"' + str(type_id) + '"'
         if (parent_id != None):
-            data  += ', "parent_id":"' + str(parent_id) + '"'
+            if not first:
+                data +=', '
+                first = False
+            data  += '"parent_id":"' + str(parent_id) + '"'
         if (position != None):
-            data  += ', "position":"' + str(position) + '"'
+            if not first:
+                data +=', '
+                first = False
+            data  += '"position":"' + str(position) + '"'
         data  += "}}"
 
 
