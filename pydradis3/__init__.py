@@ -35,34 +35,25 @@ class Pydradis3:
     attachment_endpoint = "/pro/api/nodes/<ID>/attachments"
 
     #Constructor
-    def __init__(self, apiToken: str, url: str, debug=False, verify=True, proxies=None):
-        self.__apiToken = apiToken  #API Token
+    def __init__(self, apiToken: str, url: str, debug=False, verify=True):
         self.__url = url            #Dradis URL (eg. https://your_dradis_server.com)
-        self.__header = { 'Authorization':'Token token="' + self.__apiToken + '"'}
-        self.__headerCt = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Content-Type': 'application/json'}
         self.__debug = debug        #Debuging True?
-        self.__verify = verify      #Path to SSL certificate, or boolean, depending on validation requirements
-        if proxies is not None:
-            self.__proxies = proxies    #List of proxies to access the Dradis API
-        else:
-            self.__proxies = urllib.request.getproxies()
-
-        if self.__debug:
-            print(f'Using proxies : {str(self.__proxies)}')
+        # Use a session considering number of requests made
+        self.__session = requests.Session(verify=verify)
+        # Set the auth header for the full Session, Dradis-Project-Id being conditional
+        self.__session.headers.update({'Authorization': 'Token token=' + apiToken})
 
 
     def debug(self, val: bool):
         self.__debug = val
 
     #Send Requests to Dradis (& DebuggCheck for Error Codes)
-    def contactDradis(self, url: str, header: dict, reqType: str, response_code: str, data=""):
-        r = 0
-        r = requests.Request(reqType, url, headers=header, data=data)
-        r = r.prepare()
+    def contactDradis(self, url: str, header: dict, reqType: str, response_code: str, data=None):
+        # All requests body should only contain JSON
+        r = requests.Request(reqType, url, headers=header, json=data)
+        rp = s.prepare(r)
 
-        s = requests.Session()
-        s.verify = self.__verify
-        results = s.send(r, proxies=self.__proxies)
+        results = s.send(r)
 
         print(results)
         if (self.__debug):
