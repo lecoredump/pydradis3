@@ -39,7 +39,7 @@ class Pydradis3:
         self.__apiToken = apiToken  #API Token
         self.__url = url            #Dradis URL (eg. https://your_dradis_server.com)
         self.__header = { 'Authorization':'Token token="' + self.__apiToken + '"'}
-        self.__headerCt = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Content-type': 'application/json'}
+        self.__headerCt = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Content-Type': 'application/json'}
         self.__debug = debug        #Debuging True?
         self.__verify = verify      #Path to SSL certificate, or boolean, depending on validation requirements
         if proxies is not None:
@@ -333,7 +333,7 @@ class Pydradis3:
         url = self.__url + self.node_endpoint
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         if (parent_id != None): #If None (Meaning its a toplevel node) then dont convert None to string.
@@ -356,7 +356,7 @@ class Pydradis3:
         url = self.__url + self.node_endpoint + "/" + str(node_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA (notice this time we are building a str not a dict)
         if (label==type_id==parent_id==position==None):
@@ -402,7 +402,7 @@ class Pydradis3:
         url = self.__url + self.node_endpoint + "/" + str(node_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "DELETE", "200")
@@ -420,7 +420,7 @@ class Pydradis3:
         url = self.__url + self.node_endpoint
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "GET", "200")
@@ -457,7 +457,7 @@ class Pydradis3:
         url = self.__url + self.node_endpoint + "/" + str(node_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "GET", "200")
@@ -502,7 +502,7 @@ class Pydradis3:
         url = self.__url + self.issue_endpoint
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -528,7 +528,7 @@ class Pydradis3:
         url = self.__url + self.issue_endpoint
 
         #HEADER
-        header = {'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = {'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         data = {'issue': data}
@@ -549,7 +549,7 @@ class Pydradis3:
         url = self.__url + self.issue_endpoint + "/" + str(issue_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -576,7 +576,7 @@ class Pydradis3:
         url = self.__url + self.issue_endpoint + "/" + str(issue_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         data = {'issue': data}
@@ -597,7 +597,7 @@ class Pydradis3:
         url = self.__url + self.issue_endpoint + "/" + str(issue_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         # Obtain original
         existingIssue = self.get_issue(pid=pid, issue_id=issue_id)
@@ -634,7 +634,7 @@ class Pydradis3:
         url = self.__url + self.issue_endpoint + "/" + str(issue_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "DELETE", "200")
@@ -723,7 +723,7 @@ class Pydradis3:
         url = self.__url + self.evidence_endpoint.replace("<ID>", str(node_id))
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -750,7 +750,7 @@ class Pydradis3:
         url = self.__url + self.evidence_endpoint.replace("<ID>", str(node_id))
 
         #HEADER
-        header = {'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = {'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         data = {'evidence':{'content':data, "issue_id":str(issue_id)}}
@@ -771,7 +771,7 @@ class Pydradis3:
         url = self.__url + self.evidence_endpoint.replace("<ID>", str(node_id)) + "/" + str(evidence_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -797,7 +797,7 @@ class Pydradis3:
         url = self.__url + self.evidence_endpoint.replace("<ID>", str(node_id)) + "/" + str(evidence_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "DELETE", "200")
@@ -892,7 +892,7 @@ class Pydradis3:
         url = self.__url + self.note_endpoint.replace("<ID>", str(node_id))
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -918,7 +918,7 @@ class Pydradis3:
         url = self.__url + self.note_endpoint.replace("<ID>", str(node_id))
 
         #HEADER
-        header = {'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = {'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         data = {'note':{'text':data}}
@@ -939,7 +939,7 @@ class Pydradis3:
         url = self.__url + self.note_endpoint.replace("<ID>", str(node_id)) + "/" + str(note_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -965,7 +965,7 @@ class Pydradis3:
         url = self.__url + self.note_endpoint.replace("<ID>", str(node_id)) + "/" + str(note_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #DATA
         taglines = ""
@@ -991,7 +991,7 @@ class Pydradis3:
         url = self.__url + self.note_endpoint.replace("<ID>", str(node_id)) + "/" + str(note_id)
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "DELETE", "200")
@@ -1134,7 +1134,7 @@ class Pydradis3:
         url = self.__url + self.attachment_endpoint.replace("<ID>", str(node_id)) + "/" + attachment_name
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Content-type': 'application/json', 'Dradis-Project-Id': str(pid)}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Content-Type': 'application/json', 'Dradis-Project-Id': str(pid)}
 
         #DATA
         data = {"attachment":{"filename":new_attachment_name}}
@@ -1154,7 +1154,7 @@ class Pydradis3:
         url = self.__url + self.attachment_endpoint.replace("<ID>", str(node_id)) + "/" + attachment_name
 
         #HEADER
-        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-type': 'application/json'}
+        header = { 'Authorization':'Token token="' + self.__apiToken + '"', 'Dradis-Project-Id': str(pid), 'Content-Type': 'application/json'}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, header, "DELETE", "200")
