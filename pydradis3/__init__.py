@@ -26,7 +26,7 @@ import urllib
 
 class Pydradis3:
     #End Nodes#
-    client_endpoint = "/pro/api/clients"
+    team_endpoint = "/pro/api/teams"
     project_endpoint = "/pro/api/projects"
     node_endpoint = "/pro/api/nodes"
     issue_endpoint = "/pro/api/issues"
@@ -67,13 +67,13 @@ class Pydradis3:
         return results.json()
 
     ####################################
-    #         Clients Endpoint         #
+    #         Teams Endpoint         #
     ####################################
 
-    #Get Client List
-    def get_clientlist(self):
+    #Get Teams List
+    def get_teamlist(self):
         #URL
-        url = self.__url + self.client_endpoint
+        url = self.__url + self.team_endpoint
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__headerCt, "GET", "200")
@@ -88,14 +88,14 @@ class Pydradis3:
 
         return result
 
-    #Create Client
-    def create_client(self, client_name: str):
+    #Create team
+    def create_team(self, team_name: str):
 
         #URL
-        url = self.__url + self.client_endpoint
+        url = self.__url + self.team_endpoint
 
         #DATA
-        data = {"client":{"name":client_name}}
+        data = {"team":{"name":team_name}}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__headerCt, "POST", "201", json.dumps(data))
@@ -106,14 +106,14 @@ class Pydradis3:
 
         return r['id']
 
-    #Update Client
-    def update_client(self, client_id: str, new_client_name: str):
+    #Update team
+    def update_team(self, team_id: str, new_team_name: str):
 
         #URL
-        url = self.__url + self.client_endpoint + "/" + str(client_id)
+        url = self.__url + self.team_endpoint + "/" + str(team_id)
 
         #DATA
-        data = {"client":{"name":new_client_name}}
+        data = {"team":{"name":new_team_name}}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__headerCt, "PUT", "200", data)
@@ -124,11 +124,11 @@ class Pydradis3:
 
         return r['id']
 
-    #Delete Client
-    def delete_client(self, client_id: str):
+    #Delete team
+    def delete_team(self, team_id: str):
 
         #URL
-        url = self.__url + self.client_endpoint + "/" + str(client_id)
+        url = self.__url + self.team_endpoint + "/" + str(team_id)
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__header, "DELETE", "200")
@@ -139,11 +139,11 @@ class Pydradis3:
 
         return True
 
-    #Search For Client
-    def find_client(self, name: str):
+    #Search For team
+    def find_team(self, name: str):
 
         #URL
-        url = self.__url + self.client_endpoint
+        url = self.__url + self.team_endpoint
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__headerCt, "GET", "200")
@@ -159,11 +159,11 @@ class Pydradis3:
 
         return None
 
-    #Get Client Info
-    def get_client(self, client_id: str):
+    #Get team Info
+    def get_team(self, team_id: str):
 
         #URL
-        url = self.__url + self.client_endpoint + "/"  +  str(client_id)
+        url = self.__url + self.team_endpoint + "/"  +  str(team_id)
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__headerCt, "GET", "200")
@@ -199,15 +199,15 @@ class Pydradis3:
         return result
 
     #Create Project
-    def create_project(self, project_name: str, client_id=None):
+    def create_project(self, project_name: str, team_id=None):
 
         #URL
         url = self.__url + self.project_endpoint
 
         #DATA
         data = {"project":{"name":project_name}}
-        if (client_id is not None):
-            data = {"project":{"name":project_name, "client_id":str(client_id)}}
+        if (team_id is not None):
+            data = {"project":{"name":project_name, "team_id":str(team_id)}}
 
         #CONTACT DRADIS
         r = self.contactDradis(url, self.__headerCt, "POST", "201", data)
@@ -219,15 +219,15 @@ class Pydradis3:
         return r['id']
 
     #Update Project
-    def update_project(self, pid: int, new_project_name: str, new_client_id=None):
+    def update_project(self, pid: int, new_project_name: str, new_team_id=None):
 
         #URL
         url = self.__url + self.project_endpoint + "/" + str(pid)
 
         #DATA
         data = {"project":{"name":new_project_name}}
-        if (new_client_id is not None):
-            data = {"project":{"name":new_project_name, "client_id":str(new_client_id)}}
+        if (new_team_id is not None):
+            data = {"project":{"name":new_project_name, "team_id":str(new_team_id)}}
 
 
         #CONTACT DRADIS
