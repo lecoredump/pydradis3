@@ -30,6 +30,7 @@ class Pydradis3:
     project_endpoint = "/pro/api/projects"
     node_endpoint = "/pro/api/nodes"
     issue_endpoint = "/pro/api/issues"
+    issuelib_endpoint = "/pro/api/addons/issuelib/entries"
     evidence_endpoint = "/pro/api/nodes/<ID>/evidence"
     note_endpoint = "/pro/api/nodes/<ID>/notes"
     attachment_endpoint = "/pro/api/nodes/<ID>/attachments"
@@ -79,7 +80,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -101,7 +102,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -119,7 +120,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "PUT", "200", data)
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -134,7 +135,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
@@ -149,7 +150,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -169,7 +170,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -189,7 +190,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -213,7 +214,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "POST", "201", data)
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -234,7 +235,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__headerCt, "PUT", "200", data)
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -249,7 +250,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
@@ -264,7 +265,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -284,7 +285,7 @@ class Pydradis3:
         r = self.contactDradis(url, self.__header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -307,7 +308,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -334,7 +335,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", data)
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -366,7 +367,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", data)
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -384,7 +385,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
@@ -402,7 +403,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         #Finding packet by traversing tree structure.
@@ -439,7 +440,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -462,7 +463,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -492,7 +493,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -513,7 +514,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -540,7 +541,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -561,7 +562,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -616,7 +617,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
@@ -634,7 +635,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         #Give people the option to just input a string.
@@ -665,7 +666,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -687,7 +688,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -714,7 +715,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -735,7 +736,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -761,7 +762,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -779,7 +780,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
@@ -797,7 +798,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         #Give people the option to just input a string.
@@ -828,7 +829,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -852,7 +853,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -882,7 +883,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -903,7 +904,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "POST", "201", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -929,7 +930,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -955,7 +956,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r['id']
@@ -973,7 +974,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
@@ -991,7 +992,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         #Give people the option to just input a string.
@@ -1023,7 +1024,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return r
@@ -1045,7 +1046,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "GET", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         result = []
@@ -1119,7 +1120,7 @@ class Pydradis3:
         r = self.contactDradis(url, header, "PUT", "200", json.dumps(data))
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return [r['filename'], r["link"]]
@@ -1136,7 +1137,108 @@ class Pydradis3:
         r = self.contactDradis(url, header, "DELETE", "200")
 
         #RETURN
-        if (r == None):
+        if r is None:
             return None
 
         return True
+
+    ####################################
+    #       Issuelib Endpoint       #
+    ####################################
+
+    # Get Issuelib entries
+    def get_entrylist(self):
+        #URL
+        url = self.__url + self.issuelib_endpoint
+
+        #HEADER
+        header = {}
+
+        #CONTACT DRADIS
+        r = self.contactDradis(url, header, "GET", "200")
+
+        #RETURN
+        if r is None:
+            return None
+
+        result = []
+        for i in range(0, len(r)):
+            result.append({
+                "title" : r[i]["title"],
+                "id": r[i]["id"],
+                "tags" : r[i]["fields"]["Tags"]
+            })
+
+        return result
+
+
+    # Get Issuelib entry
+    def get_entry(self, entry_id: int):
+        #URL
+        url = self.__url + self.issuelib_endpoint + str(entry_id)
+
+        #HEADER
+        header = {}
+
+        #CONTACT DRADIS
+        r = self.contactDradis(url, header, "GET", "200")
+
+        return r
+
+
+    # Create issuelib entry
+    def create_entry(self, content: str):
+        #URL
+        url = self.__url + self.issuelib_endpoint
+
+        #HEADER
+        header = {}
+
+        if content is not None:
+            data = { "entry": { "content" : content } }
+            r = self.contactDradis(url, header, "POST", "200", data)
+
+        return r
+
+
+    #Rename Attachment
+    def update_entry(self, entry_id: int, content: str):
+        #URL
+        url = self.__url + self.issuelib_endpoint + "/" + str(entry_id)
+
+        #HEADER
+        header = {}
+
+        #DATA
+        if content is not None:
+            data = { "entry":{"content": content} }
+        else:
+            return None
+
+        #CONTACT DRADIS
+        r = self.contactDradis(url, header, "PUT", "200", data)
+
+        #RETURN
+        if r is None:
+            return None
+
+        return r
+
+
+    #Delete Attachment
+    def delete_entry(self, entry_id: int):
+        #URL
+        url = self.__url + self.issuelib_endpoint + "/" + str(entry_id)
+
+        #HEADER
+        header = {}
+
+        #CONTACT DRADIS
+        r = self.contactDradis(url, header, "DELETE", "200")
+
+        #RETURN
+        if r is None:
+            return None
+
+        return True
+
