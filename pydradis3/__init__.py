@@ -1186,6 +1186,57 @@ class Pydradis3:
         return r
 
 
+
+    # Find issuelib entry by searching in a given list of fields
+    # Return format is the following
+    # {
+    #   'title': 'Some title',
+    #   'id': Dradis id (integer),
+    #   'tags': either single severity Tag, or list of affected Tags if associated field "Tags" exists
+    def find_entry(self, keywords: str, search_fields: list = None, fullmatch: bool = False):
+        #URL
+        url = self.__url + self.issuelib_endpoint
+
+        #HEADER
+        header = {}
+        if search_fields is None:
+            search_fields = [ "title", "id", "description" ]
+
+        #CONTACT DRADIS
+        issuelist = self.contactDradis(url, header, "GET", "200")
+
+        results = []
+
+        if type(keywords) == str:
+            for issue in issuelist:
+                search_val = 0
+                for name, value in issue["fields"].items():
+                    for field in search_fields:
+                        if field.lower() in name.lower():
+                            if fullmatch:
+                                search_val += 1 if keywords.lower() in str(value).lower() else 0
+                            else:
+                                for kw in [keywords]:
+                                    search_val += 1 if kw.lower() in str(value).lower() else 0
+                if search_val > 0:
+                    if "Tags" in issue["fields"].keys():
+                        results.append({
+                            "title": issue["title"],
+                            "id": issue["id"],
+                            "tags": issue["fields"]["Tags"].split(', '),
+                            "match" : search_val
+                        })
+                    else:
+                        results.append({
+                            "title": issue["title"],
+                            "id": issue["id"],
+                            "tags": issue["tag"],
+                            "match" : search_val
+                        })
+
+        return sorted(results, key=lambda searched: searched["match"], reverse=True)
+
+
     # Create issuelib entry
     def create_entry(self, content: str):
         #URL
